@@ -8,27 +8,28 @@
 
 ## Notice
 
-* :new: Checkout the new VirtualBox docs [here](https://github.com/blacktop/docker-cuckoo/blob/master/docs/virtualbox.md)
+* :new: Checkout the new VirtualBox
+  docs [here](https://github.com/blacktop/docker-cuckoo/blob/master/docs/virtualbox.md)
 * :construction: WARNING: Currently only works with remote machinery: **esx, vsphere and xenserver**.
 
 **Table of Contents**
 
 - [!cuckoo-logo Dockerfile _beta_](#cuckoo-logo-dockerfile-beta)
-  - [Notice](#notice)
-  - [Dependencies](#dependencies)
-  - [Image Tags](#image-tags)
-  - [Installation](#installation)
-  - [To Run on OSX](#to-run-on-osx)
-  - [Getting Started](#getting-started)
-    - [Now Navigate To](#now-navigate-to)
-  - [Documentation](#documentation)
-  - [Known Issues](#known-issues)
-  - [Issues](#issues)
-  - [Todo](#todo)
-  - [Credits](#credits)
-  - [CHANGELOG](#changelog)
-  - [Contributing](#contributing)
-  - [License](#license)
+    - [Notice](#notice)
+    - [Dependencies](#dependencies)
+    - [Image Tags](#image-tags)
+    - [Installation](#installation)
+    - [To Run on OSX](#to-run-on-osx)
+    - [Getting Started](#getting-started)
+        - [Now Navigate To](#now-navigate-to)
+    - [Documentation](#documentation)
+    - [Known Issues](#known-issues)
+    - [Issues](#issues)
+    - [Todo](#todo)
+    - [Credits](#credits)
+    - [CHANGELOG](#changelog)
+    - [Contributing](#contributing)
+    - [License](#license)
 
 ## Dependencies
 
@@ -47,13 +48,15 @@ blacktop/cuckoo     1.2                 258.6 MB
 
 > **NOTE:** _tags **latest** and_ \*2.0\_\_ contain all of `cuckoosandbox/community`
 
-> * tag **modified** is the _awesome_ **spender-sandbox** version of cuckoo and contains all of `spender-sandbox/community-modified`
+> * tag **modified** is the _awesome_ **spender-sandbox** version of cuckoo and contains all
+    of `spender-sandbox/community-modified`
 
 ## Installation
 
-1.  Install [Docker](https://docs.docker.com).
-2.  Install [docker-compose](https://docs.docker.com/compose/install/)
-3.  Download [trusted build](https://hub.docker.com/r/blacktop/cuckoo/) from public [Docker Registry](https://hub.docker.com/): `docker pull blacktop/cuckoo`
+1. Install [Docker](https://docs.docker.com).
+2. Install [docker-compose](https://docs.docker.com/compose/install/)
+3. Download [trusted build](https://hub.docker.com/r/blacktop/cuckoo/) from
+   public [Docker Registry](https://hub.docker.com/): `docker pull blacktop/cuckoo`
 
 ## To Run on OSX
 
@@ -120,13 +123,16 @@ $ curl localhost:8000/cuckoo/status
 
 ## Known Issues
 
-Currently won't work with VirtualBox, VMWare Workstation/Fusion or KVM/qemu, but I have an idea on how to do it. [:wink:](https://github.com/blacktop/vm-proxy) see the [NOTES](https://github.com/blacktop/docker-cuckoo/blob/master/NOTES.md)
+Currently won't work with VirtualBox, VMWare Workstation/Fusion or KVM/qemu, but I have an idea on how to do
+it. [:wink:](https://github.com/blacktop/vm-proxy) see
+the [NOTES](https://github.com/blacktop/docker-cuckoo/blob/master/NOTES.md)
 
 If you are getting issues with running elasticsearch you can try running: `sysctl -w vm.max_map_count=262144`
 
 ## Issues
 
-Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/blacktop/docker-cuckoo/issues/new) and I'll get right on it.
+Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate
+to [file an issue](https://github.com/blacktop/docker-cuckoo/issues/new) and I'll get right on it.
 
 ## Todo
 
@@ -135,7 +141,8 @@ Find a bug? Want more features? Find something missing in the documentation? Let
 * [x] Fix blacktop/yara and blacktop/volatility so I can use them as a base images for this image
 * [x] Create docker-entryporint.sh to use same container as daemon or web app or api or utility, etc
 * [ ] Figure out how to link to a analysis Windows VM (would be great if it was running in another container)
-* [x] Correctly link mongo/elasticsearch in confs or document how to do it at runtime (or use docker-entryporint BEST OPTION)
+* [x] Correctly link mongo/elasticsearch in confs or document how to do it at runtime (or use docker-entryporint BEST
+  OPTION)
 * [x] add wait-for-it.sh to wait for postgres before API starts
 * [ ] Web reverse proxy via Nginx with SSL
 * [ ] Add snort or suricata or both
@@ -143,7 +150,8 @@ Find a bug? Want more features? Find something missing in the documentation? Let
 
 ## Credits
 
-Using `blacktop/cuckoo` with **VirtualBox** brought to you by the awesome work done by [@ilyaglow](https://github.com/ilyaglow) and [remotevbox](https://github.com/ilyaglow/remote-virtualbox)
+Using `blacktop/cuckoo` with **VirtualBox** brought to you by the awesome work done
+by [@ilyaglow](https://github.com/ilyaglow) and [remotevbox](https://github.com/ilyaglow/remote-virtualbox)
 
 ## CHANGELOG
 
@@ -153,9 +161,11 @@ See [`CHANGELOG.md`](https://github.com/blacktop/docker-cuckoo/blob/master/CHANG
 
 [See all contributors on GitHub](https://github.com/blacktop/docker-cuckoo/graphs/contributors).
 
-Please update the [CHANGELOG.md](https://github.com/blacktop/docker-cuckoo/blob/master/CHANGELOG.md) and submit a [Pull Request on GitHub](https://help.github.com/articles/using-pull-requests/).
+Please update the [CHANGELOG.md](https://github.com/blacktop/docker-cuckoo/blob/master/CHANGELOG.md) and submit
+a [Pull Request on GitHub](https://help.github.com/articles/using-pull-requests/).
 
 ## License
 
 MIT Copyright (c) 2015-2020 **blacktop**
+
 # docker-cuckoo
