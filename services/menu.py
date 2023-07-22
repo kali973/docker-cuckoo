@@ -2,10 +2,9 @@ import os
 import platform
 import subprocess
 import threading
-from tkinter.scrolledtext import ScrolledText  # Importer le widget avec ascenseur
-
 try:
     import tkinter as tk
+    from tkinter.scrolledtext import ScrolledText  # Importer le widget avec ascenseur
 except ImportError:
     print("[!] Le module 'tkinter' n'est pas installé sur votre système. Installation en cours...")
     try:
@@ -15,8 +14,9 @@ except ImportError:
             subprocess.run(['brew', 'install', 'python-tk'])
         elif platform.system() == 'Windows':
             print("[!] Veuillez installer 'tkinter' à partir du site officiel Python.")
+            quit()
         import tkinter as tk
-
+        from tkinter.scrolledtext import ScrolledText  # Importer le widget avec ascenseur
         print("[+] 'tkinter' a été installé avec succès.")
     except subprocess.CalledProcessError:
         print("[X] Erreur lors de l'installation de 'tkinter'. Veuillez l'installer manuellement.")
@@ -36,7 +36,7 @@ def run_build(output_text, close_button):
 
     return_code = process.wait()
     if return_code == 0:
-        output_text.insert(tk.END, "[+] configuration terminé.\n")
+        output_text.insert(tk.END, "[+] Configuration terminée.\n")
     else:
         output_text.insert(tk.END, "[X] Erreur lors de l'exécution de build.py.\n")
 
@@ -75,38 +75,37 @@ def create_window():
 
 
 def clear():
-    linux = 'clear'
-    windows = 'cls'
-    os.system([linux, windows][os.name == 'nt'])
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
-number = '1'
-data = ""
-clear()
-while number != '0':
-    data += ' ----------------------------\n'
-    if os.name == "nt":
-        print(' [!] Please run the script on Linux Machine !')
-        quit()
-    elif os.name != "nt":
-        data = (' ----------------------------\n')
-        data += ' Hi ' + platform.uname()[1] + '\n'
-    data += ' ----------------------------\n'
-    data += ' Select option:\n'
-    data += '\n'
-    data += ' [1] Configuration environnement Cuckoo Docker\n'
-    data += ' [0] Exit\n'
-    print(data)
-    number = input(" Number~# ")
-    if number == '1':
-        print("\n Configuration environnement Cuckoo Docker...\n")
-        create_window()
-        print("\033[H\033[J", end="")
-        print("\033[H\033[J", end="")
-        data = ""
-    elif number == '0':
-        print('\n [+] Good Bye ' + platform.uname()[1] + ' !\n')
-        clear()
-        quit()
-    else:
-        print("\n [X] Error !\n [!] Select this number: 1, 2 or 0\n")
+def main():
+    number = '1'
+    data = ""
+    clear()
+    while number != '0':
+        data += ' ----------------------------\n'
+        if os.name != "nt":
+            data = (' ----------------------------\n')
+            data += ' Hi ' + platform.uname()[1] + '\n'
+        data += ' ----------------------------\n'
+        data += ' Select option:\n'
+        data += '\n'
+        data += ' [1] Configuration environnement Cuckoo Docker\n'
+        data += ' [0] Exit\n'
+        print(data)
+        number = input(" Number~# ")
+        if number == '1':
+            print("\n Configuration environnement Cuckoo Docker...\n")
+            create_window()
+            clear()
+            data = ""
+        elif number == '0':
+            print('\n [+] Good Bye ' + platform.uname()[1] + ' !\n')
+            clear()
+            quit()
+        else:
+            print("\n [X] Error !\n [!] Select this number: 1, 2 or 0\n")
+
+
+if __name__ == '__main__':
+    main()

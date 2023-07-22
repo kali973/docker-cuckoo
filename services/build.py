@@ -1,18 +1,15 @@
 import os
 
-
 def install_docker():
     # Installation des dépendances requises
     os.system('sudo apt update')
-    os.system('sudo apt install -y apt-transport-https ca-certificates curl software-properties-common')
+    os.system('sudo apt install -y apt-transport-https ca-certificates curl software-properties-common python3-tk')  # Ajout de python3-tk
 
     # Ajout de la clé GPG officielle de Docker
-    os.system(
-        'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor --yes -o /usr/share/keyrings/docker-archive-keyring.gpg')
+    os.system('curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor --yes -o /usr/share/keyrings/docker-archive-keyring.gpg')
 
     # Ajout du référentiel Docker dans les sources de paquets APT
-    os.system(
-        'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list')
+    os.system('echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list')
 
     # Mise à jour des paquets APT
     os.system('sudo apt update')
@@ -23,8 +20,7 @@ def install_docker():
 
 def install_docker_compose():
     # Téléchargement de la version stable de Docker Compose
-    os.system(
-        'sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose')
+    os.system('sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose')
 
     # Attribution des droits d'exécution à Docker Compose
     os.system('sudo chmod +x /usr/local/bin/docker-compose')
