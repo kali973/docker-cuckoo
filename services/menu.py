@@ -2,6 +2,19 @@ import os
 import platform
 import subprocess
 import threading
+
+
+# Fonction pour augmenter la valeur de vm.max_map_count sur les systèmes Linux
+def set_vm_max_map_count():
+    if platform.system() == 'Linux':
+        try:
+            subprocess.run(['sysctl', '-w', 'vm.max_map_count=262144'], check=True)
+            print("[+] La valeur de 'vm.max_map_count' a été augmentée avec succès.")
+        except subprocess.CalledProcessError:
+            print("[X] Erreur lors de la modification de la valeur de 'vm.max_map_count'.")
+            quit()
+
+
 try:
     import tkinter as tk
     from tkinter.scrolledtext import ScrolledText  # Importer le widget avec ascenseur
@@ -17,6 +30,7 @@ except ImportError:
             quit()
         import tkinter as tk
         from tkinter.scrolledtext import ScrolledText  # Importer le widget avec ascenseur
+
         print("[+] 'tkinter' a été installé avec succès.")
     except subprocess.CalledProcessError:
         print("[X] Erreur lors de l'installation de 'tkinter'. Veuillez l'installer manuellement.")
@@ -57,7 +71,6 @@ def create_window():
     window.title("Configuration")
     window.geometry("800x600")
 
-    # Créer un widget ScrolledText avec ascenseur
     output_text = ScrolledText(window, width=80, height=27)
     output_text.pack(pady=10)
 
@@ -79,6 +92,7 @@ def clear():
 
 
 def main():
+    set_vm_max_map_count()  # Appeler la fonction pour augmenter la valeur de vm.max_map_count
     number = '1'
     data = ""
     clear()
@@ -90,13 +104,43 @@ def main():
         data += ' ----------------------------\n'
         data += ' Select option:\n'
         data += '\n'
-        data += ' [1] Configuration environnement Cuckoo Docker\n'
+        data += ' [1] Configuration TheHive Docker\n'
+        data += ' [2] Configuration CapeV2 Docker\n'
+        data += ' [3] Configuration Cuckoo Docker\n'
+        data += ' [4] Configuration Glimps Docker\n'
+        data += ' [5] Configuration Joe SandBox Docker\n'
+        data += ' [6] Configuration ActiveMq Docker\n'
         data += ' [0] Exit\n'
         print(data)
         number = input(" Number~# ")
         if number == '1':
-            print("\n Configuration environnement Cuckoo Docker...\n")
+            print("\n Configuration TheHive ...\n")
+            # create_window()
+            clear()
+            data = ""
+        if number == '2':
+            print("\n Configuration CapeV2 ...\n")
+            # create_window()
+            clear()
+            data = ""
+        if number == '3':
+            print("\n Configuration Cuckoo ...\n")
             create_window()
+            clear()
+            data = ""
+        if number == '4':
+            print("\n Configuration Glimps ...\n")
+            # create_window()
+            clear()
+            data = ""
+        if number == '5':
+            print("\n Configuration Joe SandBox ...\n")
+            # create_window()
+            clear()
+            data = ""
+        if number == '6':
+            print("\n Configuration ActiveMq  ...\n")
+            # create_window()
             clear()
             data = ""
         elif number == '0':
